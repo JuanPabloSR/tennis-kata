@@ -13,11 +13,15 @@ public class TennisGame3 implements TennisGame {
     public String getScore() {
         if (scoreIsLowerThan4())
             return lowerThan4();
-        else if (scorePlayer1 == scorePlayer2)
+        else if (isScoreEqual())
             return "Deuce";
         else{
             return greaterThan4();
         }
+    }
+
+    private boolean isScoreEqual() {
+        return scorePlayer1 == scorePlayer2;
     }
 
     private boolean scoreIsLowerThan4() {
@@ -48,7 +52,7 @@ public class TennisGame3 implements TennisGame {
         String s;
         String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
         s = p[scorePlayer1];
-        return (scorePlayer1 == scorePlayer2) ? s + "-All" : s + "-" + p[scorePlayer2];
+        return (isScoreEqual()) ? s + "-All" : s + "-" + p[scorePlayer2];
     }
 
     public void wonPoint(String playerName) {
